@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>게임 화면</title>
+</head>
+<body>
+<h1>게임</h1>
+<h2>플레이어의 손 모양</h2>
+<div th:each="image : ${handImages}">
+    <img th:src="@{/images/__${image}__}" th:alt="${image}">
+</div>
+</body>
+</html>

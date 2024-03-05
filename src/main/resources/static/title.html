@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>게임 화면</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>게임</h1>
+<div id="playerCountForm">
+    <label for="playerCount">플레이어 수(2~5): </label>
+    <input type="number" id="playerCount" min="2" max="5">
+    <button onclick="setPlayerCount()">시작</button>
+</div>
+<div id="gameStatus"></div>
+
+<script>
+    function setPlayerCount() {
+        var playerCount = $('#playerCount').val();
+        $.ajax({
+            url: '/game/players',
+            type: 'POST',
+            data: {count: playerCount},
+            success: function(response) {
+                $('#playerCountForm').hide();
+                $('#gameStatus').text(response);
+                playGame();
+            },
+            error: function(xhr, status, error) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+
+    function playGame() {
+        $.ajax({
+            url: '/game/play',
+            type: 'POST',
+            success: function(response) {
+                $('#gameStatus').text(response);
+            },
+            error: function(xhr, status, error) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+</script>
+</body>
+</html>
