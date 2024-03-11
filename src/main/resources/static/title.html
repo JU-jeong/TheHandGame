@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>게임 화면</title>
+    <title>another piece of shit</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<h1>게임</h1>
+<h1>game</h1>
 <div id="playerCountForm">
-    <label for="playerCount">플레이어 수(2~5): </label>
+    <label for="playerCount">player count(2~5): </label>
     <input type="number" id="playerCount" min="2" max="5">
-    <button onclick="setPlayerCount()">시작</button>
+    <button onclick="setPlayerCount()">start</button>
 </div>
 <div id="gameStatus"></div>
 
@@ -17,7 +17,7 @@
     function setPlayerCount() {
         var playerCount = $('#playerCount').val();
         $.ajax({
-            url: '/game/players',
+            url: '/handController/players',
             type: 'POST',
             data: {count: playerCount},
             success: function(response) {

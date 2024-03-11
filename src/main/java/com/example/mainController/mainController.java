@@ -1,5 +1,6 @@
 package com.example.mainController;
 
+import com.example.logic.Game;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +38,10 @@ public class mainController {
             game.opponentTurnMethod();
         }
 
-        return ResponseEntity.ok("게임이 종료되었습니다.");
+        if (game.isGameOver()) {
+            return ResponseEntity.ok("게임이 종료되었습니다. 승자: " + (game.getGameCounter() == 1 ? "플레이어" : "상대"));
+        } else {
+            return ResponseEntity.ok("게임 종료 조건을 충족하지 못했습니다.");
+        }
     }
 }

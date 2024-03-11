@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>게임 화면</title>
+    <title>image</title>
 </head>
 <body>
-<h1>게임</h1>
-<h2>플레이어의 손 모양</h2>
+<h1>game2</h1>
+<h2>player hand image</h2>
 <div th:each="image : ${handImages}">
     <img th:src="@{/images/__${image}__}" th:alt="${image}">
 </div>

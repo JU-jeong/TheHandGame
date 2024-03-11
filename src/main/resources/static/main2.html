@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>fucking shit</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>fuck</h1>
+<div id="gameStatus"></div>
+
+<script>
+    // 게임 상태를 저장할 객체
+    var gameStatus = {
+        playerCount: 0,
+        gameCounter: 0
+    };
+
+    // 플레이어 수 입력 후 게임 시작
+    function startGame() {
+        var playerCount = parseInt(prompt("fucking shit (2~5):"));
+        if (playerCount < 2 || playerCount > 5 || isNaN(playerCount)) {
+            alert("input between 2 from 5.");
+            return;
+        }
+        gameStatus.playerCount = playerCount;
+        gameStatus.gameCounter = 0;
+        playTurn();
+    }
+
+    // 플레이어의 턴 실행
+    function playTurn() {
+        // 본인의 턴
+        if (gameStatus.gameCounter % gameStatus.playerCount == 0) {
+            playerTurn();
+        }
+        // 상대의 턴
+        else {
+            opponentTurn();
+        }
+    }
+
+    // 본인의 턴 실행
+    function playerTurn() {
+        // 2-A-1
+        var selectedValue = parseInt(prompt("select number between 'logic'"));
+
+        // 2-A-2
+        var choice = parseInt(prompt(selectedValue + "select between 0 to 2"));
+
+        // 2-A-3
+        var sum = 0;
+        for (var i = 0; i < gameStatus.playerCount; i++) {
+            sum += Math.floor(Math.random() * 3);
+        }
+
+        // 2-A-4
+        if (selectedValue + choice == sum) {
+            gameStatus.gameCounter++;
+            alert("victory!");
+        } else {
+            alert("next turn.");
+        }
+
+        // 다음 턴 실행
+        playTurn();
+    }
+
+    // 상대의 턴 실행
+    function opponentTurn() {
+        // 2-B-1
+        var randomValue = Math.floor(Math.random() * (gameStatus.playerCount * 2));
+
+        // 2-B-2
+        var choice = Math.floor(Math.random() * 3);
+
+        // 2-B-3
+        var sum = 0;
+        for (var i = 0; i < gameStatus.playerCount; i++) {
+            sum += Math.floor(Math.random() * 3);
+        }
+
+        // 2-B-4
+        if (randomValue + choice == sum) {
+            gameStatus.gameCounter--;
+            alert("you lose.");
+        }
+
+        // 다음 턴 실행
+        playTurn();
+    }
+
+    // 게임 시작
+    startGame();
+</script>
+</body>
+</html>
