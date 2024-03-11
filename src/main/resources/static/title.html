@@ -14,6 +14,10 @@
 <div id="gameStatus"></div>
 
 <script>
+    function response() {
+        alert("asdf");
+    }
+
     function setPlayerCount() {
         var playerCount = $('#playerCount').val();
         $.ajax({
@@ -26,7 +30,9 @@
                 playGame();
             },
             error: function(xhr, status, error) {
-                alert(xhr.responseText);
+                $('#playerCountForm').hide();
+                $('#gameStatus').text(response);
+                playGame();
             }
         });
     }
