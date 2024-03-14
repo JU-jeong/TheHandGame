@@ -27,7 +27,7 @@
             success: function(response) {
                 $('#playerCountForm').hide();
                 $('#gameStatus').text(response);
-                playGame();
+                window.location.href = '/main2.html'
             },
             error: function(xhr, status, error) {
                 $('#playerCountForm').hide();

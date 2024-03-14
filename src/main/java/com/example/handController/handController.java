@@ -21,7 +21,7 @@ public class handController {
         int count = request.getCount();
         logger.info("Received player count: " + count);
         model.addAttribute("playerCount", count);
-        return "redirect:main2.html";
+        return "redirect:/main2.html";
     }
 
     @GetMapping("/game")
